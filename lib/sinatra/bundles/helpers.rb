@@ -10,6 +10,15 @@ module Sinatra
         sn = request.script_name rescue nil
         settings.javascript_bundles[bundle].to_html(sn)
       end
+      
+      # Emit a script tag for each files in a javascript bundle
+      #
+      # @param [Symbol,String] bundle The bundle name
+      # @return [String] HTML script tag
+      def javascript_bundle_include_tags(bundle)
+        sn = request.script_name rescue nil
+        settings.javascript_bundles[bundle].files
+      end
 
       # Emit a script tag for a stylesheet bundle
       #
